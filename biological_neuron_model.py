@@ -1,4 +1,5 @@
-# Author: Radu Grosu (script originally written in MATLAB)
+# Author: Radu Grosu (wrote the original MATLAB source code)
+# Author: Hannes Brantner (improved the translated Python script)
 
 import matplotlib.pyplot as plt
 import numpy as np

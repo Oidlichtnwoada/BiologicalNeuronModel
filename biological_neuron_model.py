@@ -33,13 +33,13 @@ def train(initial_values):
     # constant parameters of the network
     # neuron parameters
     c = 50
-    gL = 0.4
-    eL = -70
+    gL = 0.5
+    eL = 0
     # synaptic parameters
-    eX = 0
-    eI = -90
+    eX = 70
+    eI = 0
     s = 0.5
-    m = -40
+    m = 30
 
     # training variables
     g_input2x = initial_values[0]
@@ -50,10 +50,8 @@ def train(initial_values):
     g_x2y = initial_values[5]
 
     # resting membrane potential of x and y
-    neuron_x = np.zeros([simulation_time, 1])
-    neuron_y = np.zeros([simulation_time, 1])
-    neuron_x[0:simulation_time - 1] = -70
-    neuron_y[0:simulation_time - 1] = -70
+    neuron_x = np.ones([simulation_time, 1]) * eL
+    neuron_y = np.ones([simulation_time, 1]) * eL
 
     # load the training data
     data = pd.read_csv("training_data.csv")

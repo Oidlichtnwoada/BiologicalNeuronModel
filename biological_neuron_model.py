@@ -9,7 +9,7 @@ import pandas as pd
 # here we choose the initial values for the trainable parameters
 def values_for_initialization(init_id):
     if init_id == 0:
-        init_param = [1.28, 1.28, 0.025, 0.025, 0.16, 0.16]
+        init_param = [1.4, 1.4, 0.02, 0.02, 0.7, 0.7]
     elif init_id == 1:
         init_param = np.random.rand(6, 1)
     elif init_id == 2:
@@ -28,18 +28,17 @@ def sigmoid(x, sigma, mu):
 def train(initial_values):
     training_epochs = 1
     simulation_time = 2499
-    learning_rate = 0
+    learning_rate = 1E-30
 
     # neuron parameters
     c = 1
-    gL = 0.025
+    gL = 0.02
     eL = 0
     # synaptic parameters
     eX = 2
     eI = 0
     s = 100
     m = 0.5
-
     # training variables
     g_input2x = initial_values[0]
     g_input2y = initial_values[1]
@@ -48,9 +47,10 @@ def train(initial_values):
     g_y2x = initial_values[4]
     g_x2y = initial_values[5]
 
-    # resting membrane potential of x and y at the beginning
+    # resting membrane potential for neuron x at the beginning
+    # stored bit membrane potential for neuron y at the beginning
     neuron_x = np.ones([simulation_time, 1]) * eL
-    neuron_y = np.ones([simulation_time, 1]) * (2 * g_y2y / (gL + g_y2y))
+    neuron_y = np.ones([simulation_time, 1]) * (eX * g_y2y / (gL + g_y2y))
 
     # load the training data
     data = pd.read_csv("training_data.csv")

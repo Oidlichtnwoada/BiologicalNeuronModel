@@ -26,11 +26,11 @@ def sigmoid(x, sigma, mu):
 
 # function returns the learned parameters and the history of the two potentials of the neurons of the last training epoch
 def train(initial_values):
+
     training_epochs = 1
     simulation_time = 2499
     learning_rate = 0
 
-    # constant parameters of the network
     # neuron parameters
     c = 50
     gL = 0.5
@@ -49,7 +49,7 @@ def train(initial_values):
     g_y2x = initial_values[4]
     g_x2y = initial_values[5]
 
-    # resting membrane potential of x and y
+    # resting membrane potential of x and y at the beginning
     neuron_x = np.ones([simulation_time, 1]) * eL
     neuron_y = np.ones([simulation_time, 1]) * eL
 
